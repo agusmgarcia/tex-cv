@@ -24,10 +24,15 @@ jobs:
         with:
           root_file: main.tex
 
-      - name: Create GitHub Release
+      - name: Rename main file
+        run: |
+          mv main.pdf agustin-garcia-cv.pdf
+        shell: bash
+
+      - name: Create GitHub release
         uses: softprops/action-gh-release@v2
         with:
           body: Automated PDF build for version ${{ github.ref_name }}
-          files: main.pdf
+          files: agustin-garcia-cv.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
